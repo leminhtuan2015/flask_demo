@@ -18,11 +18,6 @@ def index():
 
     return render_template('temperrature/index.html', temperatures = temperatures, jsonStr = jsonStr)
 
-
-
-# ---------- API ---------- #
-
-
 @temperrature_bp.route('/api/get/', methods=['GET'])
 def api_get():
     day = request.args.get('day', default = "2020-05-21", type = str)
@@ -31,7 +26,6 @@ def api_get():
     jsonStr = json.dumps([temperature.toJSON() for temperature in temperatures])
 
     return jsonStr
-
 
 @temperrature_bp.route('/api/create/', methods=['POST'])
 def api_create():
